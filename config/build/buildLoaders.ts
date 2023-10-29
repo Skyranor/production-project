@@ -1,5 +1,6 @@
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 import { RuleSetRule } from 'webpack';
+
 import { BuildOptions } from './types/config';
 
 export function buildLoaders({ isDev }: BuildOptions): RuleSetRule[] {
@@ -18,7 +19,9 @@ export function buildLoaders({ isDev }: BuildOptions): RuleSetRule[] {
         options: {
           modules: {
             auto: (resPath: string) => Boolean(resPath.includes('.module.')),
-            localIdentName: isDev ? '[path][name]__[local]--[hash:base64:5]' : '[hash:base64:8]',
+            localIdentName: isDev
+              ? '[path][name]__[local]--[hash:base64:5]'
+              : '[hash:base64:8]',
           },
         },
       },
@@ -48,8 +51,10 @@ export function buildLoaders({ isDev }: BuildOptions): RuleSetRule[] {
       options: {
         presets: ['@babel/preset-env'],
         plugins: [
-          ['i18next-extract', { locales: ['ru', 'en'], keyAsDefaultValue: true }],
-          // […] your other plugins […]
+          [
+            'i18next-extract',
+            { locales: ['ru', 'en'], keyAsDefaultValue: true },
+          ],
         ],
       },
     },

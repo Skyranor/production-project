@@ -1,9 +1,10 @@
 import { Navbar } from 'widgets/Navbar';
-import { useTheme } from './providers/ThemeProvider';
-import { AppRouter } from './providers/router';
 import { classNames } from 'shared/lib/classNames/classNames';
 import { Sidebar } from 'widgets/Sidebar';
 import { Suspense } from 'react';
+
+import { AppRouter } from './providers/router';
+import { useTheme } from './providers/ThemeProvider';
 
 export const App = () => {
   const { theme } = useTheme();

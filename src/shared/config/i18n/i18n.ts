@@ -14,7 +14,7 @@ i18n
     // or even better, manage them via a UI: https://react.i18next.com/guides/multiple-translation-files#manage-your-translations-with-a-management-gui)
     fallbackLng: 'ru',
     // lng: 'ru',
-    debug: __IS_DEV__ ? true : false,
+    debug: !!__IS_DEV__,
     // defaultNS: 'main',
     // ns: ['main'],
     backend: {
