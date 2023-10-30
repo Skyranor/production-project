@@ -9,6 +9,7 @@ module.exports = {
     'plugin:react-hooks/recommended',
     'plugin:@typescript-eslint/recommended',
     'plugin:jsx-a11y/recommended',
+    'plugin:i18next/recommended',
     'prettier',
   ],
   ignorePatterns: ['dist', '.eslintrc.cjs'],
@@ -16,7 +17,7 @@ module.exports = {
   parserOptions: {
     project: './tsconfig.json',
   },
-  plugins: ['react-refresh', 'jsx-a11y', '@typescript-eslint'],
+  plugins: ['react-refresh', 'jsx-a11y', '@typescript-eslint', 'i18next'],
   rules: {
     'react-refresh/only-export-components': [
       'warn',
