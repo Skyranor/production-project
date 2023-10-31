@@ -26,7 +26,7 @@ export function buildPlugins({
     new DefinePlugin({
       __IS_DEV__: JSON.stringify(isDev),
     }),
-    new HotModuleReplacementPlugin(),
+    // new HotModuleReplacementPlugin(),
     new ReactRefreshWebpackPlugin(),
   ];
 }

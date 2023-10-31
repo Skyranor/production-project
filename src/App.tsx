@@ -1,9 +1,9 @@
 import { Suspense } from 'react';
 import { Route, Routes } from 'react-router-dom';
+import { MainPage } from 'pages/MainPage';
+import { AboutPage } from 'pages/AboutPage';
 
 import { useTheme } from './theme/useTheme';
-import { MainPage } from './components/MainPage/MainPage';
-import { AboutPageAsync } from './components/AboutPage/AboutPage.async';
 
 export function App() {
   const { theme, toggleTheme } = useTheme();
@@ -15,7 +15,7 @@ export function App() {
       <Suspense fallback={<div>loading...</div>}>
         <Routes>
           <Route path='/' element={<MainPage />} />
-          <Route path='/about' element={<AboutPageAsync />} />
+          <Route path='/about' element={<AboutPage />} />
         </Routes>
       </Suspense>
     </div>
