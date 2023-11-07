@@ -1,6 +1,7 @@
-import React, { Component, ErrorInfo, ReactNode, Suspense } from 'react';
+import { Component, ErrorInfo, ReactNode } from 'react';
+import { WithTranslation, withTranslation } from 'react-i18next';
 
-interface Props {
+interface Props extends WithTranslation {
   children?: ReactNode;
 }
 
@@ -29,18 +30,16 @@ class ErrorBoundary extends Component<Props, State> {
   public render() {
     const { hasError } = this.state;
     const { children } = this.props;
+    const { t } = this.props;
 
     if (hasError) {
       // You can render any custom fallback UI
-      return (
-        <Suspense fallback=''>
-          <h1>Something went wrong</h1>
-        </Suspense>
-      );
+      return <h1>{t('Something went wrong')}</h1>;
     }
 
     return children;
   }
 }
 
-export default ErrorBoundary;
+// eslint-disable-next-line react-refresh/only-export-components
+export default withTranslation('main')(ErrorBoundary);

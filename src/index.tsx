@@ -1,4 +1,4 @@
-import { StrictMode } from 'react';
+import { StrictMode, Suspense } from 'react';
 import { render } from 'react-dom';
 import './app/styles/index.scss';
 import { BrowserRouter } from 'react-router-dom';
@@ -11,13 +11,15 @@ import './shared/config/i18n/i18n';
 
 render(
   <BrowserRouter>
-    <ErrorBoundary>
-      <ThemeProvider>
-        <StrictMode>
-          <App />
-        </StrictMode>
-      </ThemeProvider>
-    </ErrorBoundary>
+    <Suspense fallback='loading...'>
+      <ErrorBoundary>
+        <ThemeProvider>
+          <StrictMode>
+            <App />
+          </StrictMode>
+        </ThemeProvider>
+      </ErrorBoundary>
+    </Suspense>
   </BrowserRouter>,
   document.getElementById('root')
 );

@@ -8,6 +8,5 @@ export function buildResolvers(options: BuildOptions): ResolveOptions {
     preferAbsolute: true,
     modules: [options.paths.src, 'node_modules'],
     alias: {},
-    // mainFiles: ['index'],
   };
 }
