@@ -15,7 +15,7 @@ export function buildPlugins({
   paths,
   isDev,
 }: BuildOptions): WebpackPluginInstance[] {
-  return [
+  const plugins = [
     new ProgressPlugin(),
     new HtmlWebpackPlugin({
       template: paths.html,
@@ -29,8 +29,14 @@ export function buildPlugins({
     }),
     // new HotModuleReplacementPlugin(),
     new ReactRefreshWebpackPlugin(),
-    new BundleAnalyzerPlugin({
-      openAnalyzer: false,
-    }),
   ];
+
+  if (isDev) {
+    plugins.push(
+      new BundleAnalyzerPlugin({
+        openAnalyzer: false,
+      })
+    );
+  }
+  return plugins;
 }
