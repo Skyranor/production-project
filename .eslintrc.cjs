@@ -1,17 +1,7 @@
 module.exports = {
   root: true,
   env: { browser: true, es2021: true },
-  extends: [
-    'airbnb',
-    'airbnb-typescript',
-    'airbnb/hooks',
-    'eslint:recommended',
-    'plugin:react-hooks/recommended',
-    'plugin:@typescript-eslint/recommended',
-    'plugin:jsx-a11y/recommended',
-    'plugin:i18next/recommended',
-    'prettier',
-  ],
+  extends: ['airbnb', 'airbnb-typescript', 'airbnb/hooks', 'eslint:recommended', 'plugin:react-hooks/recommended', 'plugin:@typescript-eslint/recommended', 'plugin:jsx-a11y/recommended', 'plugin:i18next/recommended', 'prettier', 'plugin:storybook/recommended', 'plugin:storybook/recommended'],
   ignorePatterns: ['dist', '.eslintrc.cjs'],
   parser: '@typescript-eslint/parser',
   parserOptions: {

@@ -1,11 +1,19 @@
 .Button {
-	cursor: pointer;
-	color: var(--inverted-primary-color);
+  cursor: pointer;
+  color: var(--inverted-primary-color);
+  background: none;
 }
 
 .clear {
-	border: none;
-	outline: none;
-	background: none;
-	padding: 0;
+  border: none;
+  outline: none;
+
+  //  color: var(--inverted-primary-color);
+  padding: 0;
+}
+
+.outline {
+  border: 1px solid var(--primary-color);
+
+  // color: var(--primary-color);
 }
