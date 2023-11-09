@@ -1,7 +1,19 @@
 module.exports = {
   root: true,
   env: { browser: true, es2021: true },
-  extends: ['airbnb', 'airbnb-typescript', 'airbnb/hooks', 'eslint:recommended', 'plugin:react-hooks/recommended', 'plugin:@typescript-eslint/recommended', 'plugin:jsx-a11y/recommended', 'plugin:i18next/recommended', 'prettier', 'plugin:storybook/recommended', 'plugin:storybook/recommended'],
+  extends: [
+    'airbnb',
+    'airbnb-typescript',
+    'airbnb/hooks',
+    'eslint:recommended',
+    'plugin:react-hooks/recommended',
+    'plugin:@typescript-eslint/recommended',
+    'plugin:jsx-a11y/recommended',
+    'plugin:i18next/recommended',
+    'prettier',
+    'plugin:storybook/recommended',
+    'plugin:storybook/recommended',
+  ],
   ignorePatterns: ['dist', '.eslintrc.cjs'],
   parser: '@typescript-eslint/parser',
   parserOptions: {
@@ -33,7 +45,8 @@ module.exports = {
     '@typescript-eslint/no-unused-vars': 'warn',
     'react/jsx-props-no-spreading': 'warn',
     'no-underscore-dangle': 'off',
-    // 'jsx-a11y/rule-name': 2,
+    'jsx-a11y/no-static-element-interactions': 'off',
+    'jsx-a11y/click-events-have-key-events': 'off',
   },
   globals: {
     __IS_DEV__: true,

@@ -1,6 +1,10 @@
 import { classNames } from 'shared/lib/classNames/classNames';
 import { AppLink, AppLinkTheme } from 'shared/ui/AppLink/AppLink';
 import { useTranslation } from 'react-i18next';
+import { useState } from 'react';
+import { Modal } from 'widgets/Modal/Modal';
+import { Button, ButtonTheme } from 'shared/ui/Button/Button';
+import { Theme } from 'theme/ThemeContext';
 
 import cls from './Navbar.module.scss';
 
@@ -10,6 +14,25 @@ interface NavbarProps {
 
 export const Navbar = (props: NavbarProps) => {
   const { className } = props;
+  const [isAuthModal, setAuthModal] = useState(false);
+
+  const toggleModal = () => {
+    setAuthModal((prev) => !prev);
+  };
+
   const { t } = useTranslation(['main', 'about']);
-  return <nav className={classNames(cls.navbar, {}, [className])} />;
+  return (
+    <nav className={classNames(cls.navbar, {}, [className])}>
+      <Button theme={ButtonTheme.CLEAR} onClick={toggleModal}>
+        {t('Login')}
+      </Button>
+      <Modal isOpen={isAuthModal} onClose={() => setAuthModal(false)}>
+        <p>
+          {/* eslint-disable i18next/no-literal-string */}
+          Lorem ipsum dolor sit amet consectetur adipisicing elit.
+          Exercitationem
+        </p>
+      </Modal>
+    </nav>
+  );
 };
