@@ -20,6 +20,7 @@ export default {
   coveragePathIgnorePatterns: ['\\\\node_modules\\\\'],
   moduleFileExtensions: ['js', 'jsx', 'ts', 'tsx', 'json', 'node'],
   moduleDirectories: ['node_modules', 'src'],
+  modulePaths: ['<rootDir>src'],
   testMatch: [
     // Обнаружил разницу между МАК ОС и ВИНДОУС!!!
     '<rootDir>src/**/*(*.)@(spec|test).[tj]s?(x)',
@@ -27,9 +28,18 @@ export default {
   rootDir: '../../',
   preset: 'ts-jest',
   setupFilesAfterEnv: ['<rootDir>/config/jest/setupTests.ts'],
+  // moduleNameMapper: {
+  //   '^.+\\.(css|less|gif|jpg|jpeg|svg|png)$': 'module.exports = {};',
+  //   'src/(.*)': '<rootDir>/src/$1',
+  //   '\\.s?css$': 'identity-obj-proxy',
+  // },
   moduleNameMapper: {
     '\\.s?css$': 'identity-obj-proxy',
+    'src/(.*)': '<rootDir>/src/$1',
     '\\.svg': path.resolve(__dirname, 'jestEmptyComponent.tsx'),
+  },
+  globals: {
+    __IS_DEV__: true,
   },
   // transform: {
   //   '\\.[jt]sx?$': 'babel-jest',
@@ -120,9 +130,7 @@ export default {
   // The root directory that Jest should scan for tests and modules within
 
   // A list of paths to directories that Jest should use to search for files in
-  // roots: [
-  //   "<rootDir>"
-  // ],
+  // roots: ['<rootDir>'],
 
   // Allows you to use a custom runner instead of Jest's default test runner
   // runner: "jest-runner",
