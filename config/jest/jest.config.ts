@@ -35,8 +35,14 @@ export default {
   // },
   moduleNameMapper: {
     '\\.s?css$': 'identity-obj-proxy',
-    'src/(.*)': '<rootDir>/src/$1',
     '\\.svg': path.resolve(__dirname, 'jestEmptyComponent.tsx'),
+    'root/(.*)': '<rootDir>/$1',
+    'src/(.*)': '<rootDir>/src/$1',
+    'widgets/(.*)': '<rootDir>/src/widgets/$1',
+    'entities/(.*)': '<rootDir>/src/entities/$1',
+    'features/(.*)': '<rootDir>/src/features/$1',
+    'shared/(.*)': '<rootDir>/src/shared/$1',
+    'app/(.*)': '<rootDir>/src/app/$1',
   },
   globals: {
     __IS_DEV__: true,
