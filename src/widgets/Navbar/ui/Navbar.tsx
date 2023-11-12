@@ -4,6 +4,7 @@ import { useTranslation } from 'react-i18next';
 import { useState } from 'react';
 import { Modal } from 'shared/ui/Modal/Modal';
 import { Button, ButtonTheme } from 'shared/ui/Button/Button';
+import { LoginModal } from 'features/AuthByUserName';
 
 import cls from './Navbar.module.scss';
 
@@ -25,13 +26,7 @@ export const Navbar = (props: NavbarProps) => {
       <Button theme={ButtonTheme.CLEAR} onClick={toggleModal}>
         {t('Login')}
       </Button>
-      <Modal isOpen={isAuthModal} onClose={() => setAuthModal(false)}>
-        <p>
-          {/* eslint-disable i18next/no-literal-string */}
-          Lorem ipsum dolor sit amet consectetur adipisicing elit.
-          Exercitationem
-        </p>
-      </Modal>
+      <LoginModal isOpen={isAuthModal} onClose={toggleModal} />
     </nav>
   );
 };
