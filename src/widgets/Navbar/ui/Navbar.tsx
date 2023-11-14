@@ -1,10 +1,11 @@
 import { classNames } from 'shared/lib/classNames/classNames';
-import { AppLink, AppLinkTheme } from 'shared/ui/AppLink/AppLink';
 import { useTranslation } from 'react-i18next';
-import { useState } from 'react';
-import { Modal } from 'shared/ui/Modal/Modal';
+import { useCallback, useState } from 'react';
 import { Button, ButtonTheme } from 'shared/ui/Button/Button';
 import { LoginModal } from 'features/AuthByUserName';
+import { useAuth } from 'shared/hooks/useAuth';
+import { useAppDispatch } from 'shared/hooks/useAppDispatch';
+import { logout } from 'entities/User';
 
 import cls from './Navbar.module.scss';
 
@@ -15,18 +16,36 @@ interface NavbarProps {
 export const Navbar = (props: NavbarProps) => {
   const { className } = props;
   const [isAuthModal, setAuthModal] = useState(false);
+  const isAuth = useAuth();
+  const dispatch = useAppDispatch();
 
-  const toggleModal = () => {
-    setAuthModal((prev) => !prev);
-  };
+  const handleOpenModal = useCallback(() => {
+    setAuthModal(true);
+  }, []);
+
+  const handleCloseModal = useCallback(() => {
+    setAuthModal(false);
+  }, []);
+
+  const handleLogout = useCallback(() => {
+    dispatch(logout());
+    setAuthModal(false);
+  }, [dispatch]);
 
   const { t } = useTranslation(['main', 'about']);
-  return (
+
+  return isAuth ? (
     <nav className={classNames(cls.navbar, {}, [className])}>
-      <Button theme={ButtonTheme.CLEAR} onClick={toggleModal}>
+      <Button theme={ButtonTheme.CLEAR} onClick={handleLogout}>
+        {t('Logout')}
+      </Button>
+    </nav>
+  ) : (
+    <nav className={classNames(cls.navbar, {}, [className])}>
+      <Button theme={ButtonTheme.CLEAR} onClick={handleOpenModal}>
         {t('Login')}
       </Button>
-      <LoginModal isOpen={isAuthModal} onClose={toggleModal} />
+      <LoginModal isOpen={isAuthModal} onClose={handleCloseModal} />
     </nav>
   );
 };
