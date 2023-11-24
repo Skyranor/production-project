@@ -29,7 +29,7 @@ export const Navbar = (props: NavbarProps) => {
 
   const handleLogout = useCallback(() => {
     dispatch(logout());
-    setAuthModal(false);
+    // setAuthModal(false);
   }, [dispatch]);
 
   const { t } = useTranslation(['main', 'about']);
@@ -45,7 +45,9 @@ export const Navbar = (props: NavbarProps) => {
       <Button theme={ButtonTheme.CLEAR} onClick={handleOpenModal}>
         {t('Login')}
       </Button>
-      <LoginModal isOpen={isAuthModal} onClose={handleCloseModal} />
+      {isAuthModal && (
+        <LoginModal isOpen={isAuthModal} onClose={handleCloseModal} />
+      )}
     </nav>
   );
 };

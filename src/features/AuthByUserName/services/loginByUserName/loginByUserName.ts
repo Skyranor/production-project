@@ -4,7 +4,7 @@ import { User, setAuthData } from 'entities/User';
 import { USER_LOCAL_STORAGE_KEY } from 'shared/const/localStorage';
 
 interface LoginByUserNameProps {
-  username: string;
+  userName: string;
   password: string;
 }
 

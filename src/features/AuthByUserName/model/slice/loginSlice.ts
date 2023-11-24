@@ -4,7 +4,7 @@ import { LoginSchema } from '../types/loginSchema';
 import { loginByUserName } from '../../services/loginByUserName/loginByUserName';
 
 const initialState: LoginSchema = {
-  username: '',
+  userName: '',
   password: '',
   isLoading: false,
   error: '',
@@ -15,7 +15,7 @@ const loginSlice = createSlice({
   initialState,
   reducers: {
     setUserName(state, action: PayloadAction<string>) {
-      state.username = action.payload;
+      state.userName = action.payload;
     },
     setPassword(state, action: PayloadAction<string>) {
       state.password = action.payload;

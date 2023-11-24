@@ -6,23 +6,39 @@ import { Input } from 'shared/ui/Input/Input';
 import { Text, TextTheme } from 'shared/ui/Text/Text';
 import { useAppDispatch } from 'shared/hooks/useAppDispatch';
 import { useAppSelector } from 'shared/hooks/useAppSelector';
+import {
+  DynamicModuleLoader,
+  ReducerList,
+} from 'shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
 
+import { selectLoginIsLoading } from '../../model/selectors/selectLoginIsLoading';
+import { selectLoginError } from '../../model/selectors/selctLoginError';
+import { selectLoginPassword } from '../../model/selectors/selectLoginPassword';
+import { selectLoginUserName } from '../../model/selectors/selectLoginUserName';
 import { loginByUserName } from '../../services/loginByUserName/loginByUserName';
-import { setPassword, setUserName } from '../../model/slice/loginSlice';
+import {
+  loginReducer,
+  setPassword,
+  setUserName,
+} from '../../model/slice/loginSlice';
 import cls from './LoginForm.module.scss';
-import { selectLoginState } from '../../model/selectors/selectLoginState';
 
 interface LoginFormProps {
   className?: string;
 }
 
-export const LoginForm = memo(({ className }: LoginFormProps) => {
-  const { t } = useTranslation();
+const initialReducers: ReducerList = {
+  loginForm: loginReducer,
+};
 
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+const LoginForm = memo(({ className }: LoginFormProps) => {
+  const { t } = useTranslation();
+  const userName = useAppSelector(selectLoginUserName);
+  const isLoading = useAppSelector(selectLoginIsLoading);
+  const error = useAppSelector(selectLoginError);
+  const password = useAppSelector(selectLoginPassword);
+
   const dispatch = useAppDispatch();
-  const { password, username, isLoading, error } =
-    useAppSelector(selectLoginState);
 
   const handleChangeUserName = (value: string) => {
     dispatch(setUserName(value));
@@ -33,31 +49,35 @@ export const LoginForm = memo(({ className }: LoginFormProps) => {
   };
 
   const handleLogin = () => {
-    dispatch(loginByUserName({ password, username }));
+    dispatch(loginByUserName({ password, userName }));
   };
 
   return (
-    <div className={classNames(cls.LoginForm, {}, [className])}>
-      <Text title={t('Форма авторизации')} />
-      {error && <Text text={error.toString()} theme={TextTheme.ERROR} />}
-      <Input
-        value={username}
-        onChange={handleChangeUserName}
-        autoFocus
-        placeholder={t('Введите имя')}
-      />
-      <Input
-        value={password}
-        onChange={handleChangePassword}
-        placeholder={t('Введите пароль')}
-      />
-      <Button
-        disabled={isLoading}
-        onClick={handleLogin}
-        theme={ButtonTheme.OUTLINE}
-      >
-        {t('Войти')}
-      </Button>
-    </div>
+    <DynamicModuleLoader reducers={initialReducers} removeAfterUnmount>
+      <div className={classNames(cls.LoginForm, {}, [className])}>
+        <Text title={t('Форма авторизации')} />
+        {error && <Text text={error.toString()} theme={TextTheme.ERROR} />}
+        <Input
+          value={userName}
+          onChange={handleChangeUserName}
+          autoFocus
+          placeholder={t('Введите имя')}
+        />
+        <Input
+          value={password}
+          onChange={handleChangePassword}
+          placeholder={t('Введите пароль')}
+        />
+        <Button
+          disabled={isLoading}
+          onClick={handleLogin}
+          theme={ButtonTheme.OUTLINE}
+        >
+          {t('Войти')}
+        </Button>
+      </div>
+    </DynamicModuleLoader>
   );
 });
+
+export default LoginForm;

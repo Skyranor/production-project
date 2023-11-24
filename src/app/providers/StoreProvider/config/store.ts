@@ -1,29 +1,36 @@
 import {
-  combineReducers,
+  AnyAction,
+  CombinedState,
   configureStore,
-  PreloadedState,
+  Reducer,
+  ReducersMapObject,
 } from '@reduxjs/toolkit';
 import { userReducer } from 'entities/User';
 import { counterReducer } from 'entities/Counter';
-import { loginReducer } from 'features/AuthByUserName/model/slice/loginSlice';
 
-import { StateSchema } from './StateSchema';
+import { StateSchema, StateSchemaKey } from './StateSchema';
+import { createReducerManager } from './reducerManager';
 
-const rootReducer = combineReducers<StateSchema>({
-  counter: counterReducer,
-  user: userReducer,
-  loginForm: loginReducer,
-});
+export function setupStore(preloadedState?: StateSchema) {
+  const rootReducer: ReducersMapObject<StateSchema> = {
+    counter: counterReducer,
+    user: userReducer,
+  };
+  const reducerManager = createReducerManager(rootReducer);
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-export function setupStore(preloadedState?: PreloadedState<any>) {
-  return configureStore({
-    reducer: rootReducer,
+  const store = configureStore({
+    reducer: reducerManager.reduce,
     preloadedState,
     devTools: __IS_DEV__,
   });
+
+  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+  // @ts-ignore
+  store.reducerManager = reducerManager;
+
+  return store;
 }
 
-export type RootState = ReturnType<typeof rootReducer>;
-export type AppStore = ReturnType<typeof setupStore>;
-export type AppDispatch = AppStore['dispatch'];
+// export type RootState = ReturnType<typeof setupStore>['getState'];
+// export type AppStore = ReturnType<typeof setupStore>;
+export type AppDispatch = ReturnType<typeof setupStore>['dispatch'];
