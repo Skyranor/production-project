@@ -7,11 +7,11 @@ const initialState: LoginSchema = {
   userName: '',
   password: '',
   isLoading: false,
-  error: '',
+  error: null,
 };
 
 const loginSlice = createSlice({
-  name: 'login',
+  name: 'loginForm',
   initialState,
   reducers: {
     setUserName(state, action: PayloadAction<string>) {
@@ -24,7 +24,7 @@ const loginSlice = createSlice({
   extraReducers: (builder) => {
     builder
       .addCase(loginByUserName.pending, (state) => {
-        state.error = undefined;
+        state.error = null;
         state.isLoading = true;
       })
       .addCase(loginByUserName.fulfilled, (state) => {

@@ -11,10 +11,10 @@ import {
   ReducerList,
 } from 'shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
 
-import { selectLoginIsLoading } from '../../model/selectors/selectLoginIsLoading';
-import { selectLoginError } from '../../model/selectors/selctLoginError';
-import { selectLoginPassword } from '../../model/selectors/selectLoginPassword';
-import { selectLoginUserName } from '../../model/selectors/selectLoginUserName';
+import { selectLoginIsLoading } from '../../model/selectors/selectLoginIsLoading/selectLoginIsLoading';
+import { selectLoginError } from '../../model/selectors/selectLoginError/selectLoginError';
+import { selectLoginPassword } from '../../model/selectors/selectLoginPassword/selectLoginPassword';
+import { selectLoginUserName } from '../../model/selectors/selectLoginUserName/selectLoginUserName';
 import { loginByUserName } from '../../services/loginByUserName/loginByUserName';
 import {
   loginReducer,

@@ -1,4 +1,4 @@
 import { StateSchema } from 'app/providers/StoreProvider';
 
 export const selectLoginIsLoading = (state: StateSchema) =>
-  state?.loginForm?.isLoading;
+  state?.loginForm?.isLoading || false;
