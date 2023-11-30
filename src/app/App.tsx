@@ -1,7 +1,7 @@
 import { Navbar } from 'widgets/Navbar';
 import { classNames } from 'shared/lib/classNames/classNames';
 import { Sidebar } from 'widgets/Sidebar';
-import { Suspense, useEffect } from 'react';
+import { useEffect } from 'react';
 import { useAppDispatch } from 'shared/hooks/useAppDispatch';
 import { initAuthData } from 'entities/User';
 
@@ -16,13 +16,11 @@ export const App = () => {
 
   return (
     <div className={classNames('app', {}, [])}>
-      <Suspense fallback=''>
-        <Navbar />
-        <div className='content-page'>
-          <Sidebar />
-          <AppRouter />
-        </div>
-      </Suspense>
+      <Navbar />
+      <div className='content-page'>
+        <Sidebar />
+        <AppRouter />
+      </div>
     </div>
   );
 };

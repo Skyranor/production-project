@@ -1,18 +1,9 @@
 import { classNames } from 'shared/lib/classNames/classNames';
-import {
-  ChangeEvent,
-  InputHTMLAttributes,
-  useEffect,
-  useRef,
-  useState,
-} from 'react';
+import { ChangeEvent, InputHTMLAttributes, memo, useEffect, useRef, useState } from 'react';
 
 import cls from './Input.module.scss';
 
-type HTMLInputProps = Omit<
-  InputHTMLAttributes<HTMLInputElement>,
-  'value' | 'onChange'
->;
+type HTMLInputProps = Omit<InputHTMLAttributes<HTMLInputElement>, 'value' | 'onChange'>;
 
 interface InputProps extends HTMLInputProps {
   className?: string;
@@ -21,16 +12,8 @@ interface InputProps extends HTMLInputProps {
   autoFocus?: boolean;
 }
 
-export const Input = (props: InputProps) => {
-  const {
-    className,
-    value,
-    onChange,
-    autoFocus,
-    type = 'text',
-    placeholder,
-    ...rest
-  } = props;
+export const Input = memo((props: InputProps) => {
+  const { className, value, onChange, autoFocus, type = 'text', placeholder, ...rest } = props;
 
   const [isFocused, setFocused] = useState(false);
   const [caretPosition, setCaretPosition] = useState(0);
@@ -61,9 +44,7 @@ export const Input = (props: InputProps) => {
   };
   return (
     <div className={classNames(cls.inputContainer, {}, [className])}>
-      {placeholder && (
-        <span className={cls.placeholder}>{`${placeholder}>`}</span>
-      )}
+      {placeholder && <span className={cls.placeholder}>{`${placeholder}>`}</span>}
       <div className={cls.inputWrapper}>
         <input
           ref={ref}
@@ -76,13 +57,8 @@ export const Input = (props: InputProps) => {
           type={type}
           {...rest}
         />
-        {isFocused && (
-          <span
-            className={cls.caret}
-            style={{ left: `${caretPosition * 9}px` }}
-          />
-        )}
+        {isFocused && <span className={cls.caret} style={{ left: `${caretPosition * 9}px` }} />}
       </div>
     </div>
   );
-};
+});

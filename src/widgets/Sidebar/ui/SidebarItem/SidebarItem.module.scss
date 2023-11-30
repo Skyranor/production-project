@@ -1,0 +1,10 @@
+.link {
+  display: flex;
+  gap: 10px;
+
+  svg {
+    fill: var(--inverted-primary-color);
+    width: 24px;
+    height: 24px;
+  }
+}
