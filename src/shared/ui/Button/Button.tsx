@@ -1,8 +1,9 @@
 import { ButtonHTMLAttributes, memo } from 'react';
-import { classNames } from 'shared/lib/classNames/classNames';
+import { Modes, classNames } from 'shared/lib/classNames/classNames';
 
 import cls from './Button.module.scss';
 
+// eslint-disable-next-line react-refresh/only-export-components
 export enum ButtonTheme {
   CLEAR = 'clear',
   OUTLINE = 'outline',
@@ -25,12 +26,13 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
 }
 
 export const Button = memo((props: ButtonProps) => {
-  const { className, children, theme, square, size, disabled, ...rest } = props;
-  const mods: Record<string, boolean> = {
+  const { className, children, theme = ButtonTheme.OUTLINE, square, size = ButtonSize.M, disabled, ...rest } = props;
+  const mods: Modes = {
     [cls.square]: square,
     [cls.disabled]: disabled,
   };
   return (
+    // eslint-disable-next-line react/jsx-props-no-spreading
     <button type='button' className={classNames(cls.Button, mods, [className, cls[theme], cls[size]])} {...rest}>
       {children}
     </button>

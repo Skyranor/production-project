@@ -18,13 +18,13 @@ export const useTheme = (): UseTheme => {
 
   const toggleTheme = useCallback(() => {
     const newTheme: Theme = theme === Theme.DARK ? Theme.LIGHT : Theme.DARK;
-    setTheme(newTheme);
+    setTheme?.(newTheme);
     document.body.className = newTheme;
     localStorage.setItem(LOCAL_STORAGE_THEME_KEY, newTheme);
   }, [theme, setTheme]);
 
   return {
-    theme,
+    theme: theme || Theme.LIGHT,
     toggleTheme,
   };
 };

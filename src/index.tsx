@@ -11,8 +11,8 @@ import { ThemeProvider } from './app/providers/ThemeProvider';
 import './shared/config/i18n/i18n';
 
 render(
-  <StoreProvider>
-    <BrowserRouter>
+  <BrowserRouter>
+    <StoreProvider>
       <Suspense fallback='loading...'>
         <ErrorBoundary>
           <ThemeProvider>
@@ -22,8 +22,7 @@ render(
           </ThemeProvider>
         </ErrorBoundary>
       </Suspense>
-    </BrowserRouter>
-    ,
-  </StoreProvider>,
+    </StoreProvider>
+  </BrowserRouter>,
   document.getElementById('root')
 );

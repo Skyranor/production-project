@@ -1,12 +1,5 @@
-import {
-  ReactNode,
-  MouseEvent,
-  useState,
-  useRef,
-  useEffect,
-  useCallback,
-} from 'react';
-import { classNames } from 'shared/lib/classNames/classNames';
+import { ReactNode, MouseEvent, useState, useRef, useEffect, useCallback } from 'react';
+import { Modes, classNames } from 'shared/lib/classNames/classNames';
 import { Portal } from 'shared/ui/Portal/Portal';
 
 import cls from './Modal.module.scss';
@@ -33,7 +26,7 @@ export const Modal = (props: ModalProps) => {
     }
   }, [isOpen]);
 
-  const mods: Record<string, boolean> = {
+  const mods: Modes = {
     [cls.opened]: isOpen,
     [cls.isClosing]: isClosing,
   };
@@ -63,7 +56,7 @@ export const Modal = (props: ModalProps) => {
       window.addEventListener('keydown', onKeyDown);
     }
     return () => {
-      clearInterval(timerRef.current);
+      clearTimeout(timerRef.current);
       window.removeEventListener('keydown', onKeyDown);
     };
   }, [isOpen, onKeyDown]);

@@ -17,13 +17,13 @@ export const SidebarItemsList: SidebarItemType[] = [
     text: 'Main',
   },
   {
-    path: RoutePath.about,
-    Icon: AboutIcon,
-    text: 'About',
-  },
-  {
     path: RoutePath.profile,
     Icon: ProfileIcon,
     text: 'Profile',
+  },
+  {
+    path: RoutePath.about,
+    Icon: AboutIcon,
+    text: 'About',
   },
 ];

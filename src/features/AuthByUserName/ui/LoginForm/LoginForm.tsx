@@ -67,7 +67,7 @@ const LoginForm = memo(({ className, onSuccess }: LoginFormProps) => {
         </Button>
       </div>
     </DynamicModuleLoader>
-  );  
+  );
 });
 
 export default LoginForm;

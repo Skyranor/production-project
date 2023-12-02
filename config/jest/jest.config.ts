@@ -46,6 +46,7 @@ export default {
   },
   globals: {
     __IS_DEV__: true,
+    __API__: '',
   },
   // transform: {
   //   '\\.[jt]sx?$': 'babel-jest',

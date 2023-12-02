@@ -21,10 +21,7 @@ module.exports = {
   },
   plugins: ['react-refresh', 'jsx-a11y', '@typescript-eslint', 'i18next'],
   rules: {
-    'react-refresh/only-export-components': [
-      'warn',
-      { allowConstantExport: true },
-    ],
+    'react-refresh/only-export-components': ['warn', { allowConstantExport: true }],
     'react/react-in-jsx-scope': 'off',
     'import/order': [
       'error',
@@ -48,9 +45,11 @@ module.exports = {
     'jsx-a11y/no-static-element-interactions': 'off',
     'jsx-a11y/click-events-have-key-events': 'off',
     'no-param-reassign': 'off',
+    'react-refresh/only-export-components': 'off',
   },
   globals: {
     __IS_DEV__: true,
+    __API__: true,
   },
   overrides: [
     {
