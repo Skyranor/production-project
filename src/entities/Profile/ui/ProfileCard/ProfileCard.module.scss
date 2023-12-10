@@ -1,10 +1,19 @@
 .ProfileCard {
   padding: 20px;
   border: 2px solid var(--invert-bg-color);
+  display: grid;
 }
 
-.header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+.avatar {
+  justify-self: center;
+}
+
+.loading,
+.error {
+  display: grid;
+  place-items: center;
+}
+
+.editing {
+  border: 2px solid var(--inverted-primary-color);
 }

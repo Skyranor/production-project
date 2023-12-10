@@ -16,8 +16,11 @@
 
 .outline {
   border: 1px solid var(--primary-color);
+}
 
-  // color: var(--primary-color);
+.outline_red {
+  border: 1px solid var(--red-light);
+  color: var(--red-light);
 }
 
 .background {
@@ -60,6 +63,6 @@
 }
 
 .disabled {
-  opacity: 0.5; 
-  pointer-events: none;  
+  opacity: 0.5;
+  pointer-events: none;
 }

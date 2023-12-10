@@ -1,38 +1,38 @@
 {
-	"posts": [
-		{
-			"id": 1,
-			"title": "json-server",
-			"userId": 1
-		},
-		{
-			"id": 2,
-			"title": "json-server",
-			"userId": 2
-		}
-	],
-	"comments": [
-		{
-			"id": 1,
-			"body": "some comment",
-			"postId": 1
-		}
-	],
-	"users": [
-		{
-			"id": 1,
-			"userName": "admin",
-			"password": "123"
-		}
-	],
-	"profile": {
-		"first": "Dmitry",
-		"lastName": "Human",
-		"age": 465,
-		"currency": "RUB",
-		"country": "Belarus",
-		"city": "Moscow",
-		"username": "admin213",
-		"avatar": "https://yt3.ggpht.com/ytc/AAUvwngFzM_Rf6MNwOnFcuphoj93k7VFjlIrj-kSMxbh=s900-c-k-c0x00ffffff-no-rj"
-	}
+  "posts": [
+    {
+      "id": 1,
+      "title": "json-server",
+      "userId": 1
+    },
+    {
+      "id": 2,
+      "title": "json-server",
+      "userId": 2
+    }
+  ],
+  "comments": [
+    {
+      "id": 1,
+      "body": "some comment",
+      "postId": 1
+    }
+  ],
+  "users": [
+    {
+      "id": 1,
+      "userName": "admin",
+      "password": "123"
+    }
+  ],
+  "profile": {
+    "first": "Dmitryyyy",
+    "lastName": "Human",
+    "age": 465,
+    "currency": "RUB",
+    "country": "Belarus",
+    "city": "Moscow",
+    "username": "admin213",
+    "avatar": "https://media.istockphoto.com/id/1152537185/photo/hacker-working-on-laptop-in-the-dark.jpg?s=612x612&w=0&k=20&c=S9odRE1_R0xaSQyjwY13tr410NKiJhJFiLRBX-X8c44="
+  }
 }

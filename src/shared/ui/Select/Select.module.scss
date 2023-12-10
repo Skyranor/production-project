@@ -1,0 +1,17 @@
+.select {
+  // Убираем стандартные стили браузера
+  // appearance: none;
+
+  // text-indent: 1px;
+  text-overflow: '';
+  background: none;
+  outline: none;
+  color: var(--primary-color);
+  border: 1px solid var(--primary-color);
+  padding: 2px 10px 2px 2px;
+}
+
+.option {
+  padding: 10px;
+  background-color: #fff;
+}
