@@ -26,10 +26,10 @@
     }
   ],
   "profile": {
-    "first": "Dmitryyyy",
+    "firstName": "Dmitry",
     "lastName": "Human",
     "age": 465,
-    "currency": "RUB",
+    "currency": "USD",
     "country": "Belarus",
     "city": "Moscow",
     "username": "admin213",

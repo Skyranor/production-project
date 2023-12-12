@@ -67,7 +67,7 @@ export const ProfileCard = (props: ProfileCardProps) => {
   return (
     <div className={classNames(cls.ProfileCard, modes, [className])}>
       {data?.avatar && <Avatar src={data.avatar} className={cls.avatar} size={150} />}
-      <Input value={data?.first} onChange={onChangeFirstName} placeholder={t('Your name')} readOnly={readOnly} />
+      <Input value={data?.firstName} onChange={onChangeFirstName} placeholder={t('Your name')} readOnly={readOnly} />
       <Input value={data?.lastName} onChange={onChangeLastName} placeholder={t('Your surname')} readOnly={readOnly} />
       <Input value={data?.age} onChange={onChangeAge} placeholder={t('Age')} readOnly={readOnly} />
       <Input value={data?.city} onChange={onChangeCity} placeholder={t('City')} readOnly={readOnly} />
