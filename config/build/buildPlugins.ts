@@ -21,14 +21,14 @@ export function buildPlugins({ paths, isDev, apiUrl, project }: BuildOptions): W
       __API__: JSON.stringify(apiUrl),
       __PROJECT__: JSON.stringify(project),
     }),
-    new ReactRefreshWebpackPlugin(),
   ];
 
   if (isDev) {
     plugins.push(
       new BundleAnalyzerPlugin({
         openAnalyzer: false,
-      })
+      }),
+      new ReactRefreshWebpackPlugin()
     );
   }
   return plugins;
