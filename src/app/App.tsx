@@ -3,12 +3,14 @@ import { classNames } from 'shared/lib/classNames/classNames';
 import { Sidebar } from 'widgets/Sidebar';
 import { useEffect } from 'react';
 import { useAppDispatch } from 'shared/hooks/useAppDispatch';
-import { initAuthData } from 'entities/User';
+import { initAuthData, selectUserMounted } from 'entities/User';
+import { useAppSelector } from 'shared/hooks/useAppSelector';
 
 import { AppRouter } from './providers/router';
 
 export const App = () => {
   const dispatch = useAppDispatch();
+  const isMountedUser = useAppSelector(selectUserMounted);
 
   useEffect(() => {
     dispatch(initAuthData());
@@ -19,7 +21,7 @@ export const App = () => {
       <Navbar />
       <div className='content-page'>
         <Sidebar />
-        <AppRouter />
+        {isMountedUser && <AppRouter />}
       </div>
     </div>
   );
