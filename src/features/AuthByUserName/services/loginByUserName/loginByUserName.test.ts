@@ -1,11 +1,11 @@
 import axios from 'axios';
+
 // eslint-disable-next-line
-import { StateSchema } from 'app/providers/StoreProvider';
+import { StateSchema } from '@/app/providers/StoreProvider';
 // eslint-disable-next-line
 import { Dispatch } from '@reduxjs/toolkit';
-import { setAuthData } from 'entities/User';
-import { TestAsyncThunk } from 'shared/lib/tests/TestAsyncThunk/TestAsyncThunk';
-
+import { setAuthData } from '@/entities/User';
+import { TestAsyncThunk } from '@/shared/lib/tests/TestAsyncThunk/TestAsyncThunk';
 import { loginByUserName } from './loginByUserName';
 
 jest.mock('axios');

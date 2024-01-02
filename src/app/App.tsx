@@ -1,12 +1,12 @@
-import { Navbar } from 'widgets/Navbar';
-import { classNames } from 'shared/lib/classNames/classNames';
-import { Sidebar } from 'widgets/Sidebar';
 import { useEffect } from 'react';
-import { useAppDispatch } from 'shared/hooks/useAppDispatch';
-import { initAuthData, selectUserMounted } from 'entities/User';
-import { useAppSelector } from 'shared/hooks/useAppSelector';
 
+import { Navbar } from '@/widgets/Navbar';
+import { classNames } from '@/shared/lib/classNames/classNames';
+import { useAppDispatch } from '@/shared/hooks/useAppDispatch';
+import { initAuthData, selectUserMounted } from '@/entities/User';
+import { useAppSelector } from '@/shared/hooks/useAppSelector';
 import { AppRouter } from './providers/router';
+import { Sidebar } from '@/widgets/Side';
 
 export const App = () => {
   const dispatch = useAppDispatch();
@@ -26,5 +26,3 @@ export const App = () => {
     </div>
   );
 };
-
-

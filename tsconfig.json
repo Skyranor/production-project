@@ -33,16 +33,14 @@
     //для абсолютного импорта
     "baseUrl": ".",
     "paths": {
-      "*": [
-        "./src/*"
-      ]
+      "@/*": ["./src/*"]
     }
   },
   "ts-node": {
     "compilerOptions": {
-      "module": "CommonJS",
-    },
-  },
+      "module": "CommonJS"
+    }
+  }
   // "include": [
   //   "src/**/*.ts",
   //   "src/**/*.tsx",

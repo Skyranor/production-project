@@ -1,6 +1,5 @@
-import { StateSchema } from 'app/providers/StoreProvider';
-import { Country } from 'shared/const/common';
-
+import { StateSchema } from '@/app/providers/StoreProvider';
+import { Country } from '@/shared/const/common';
 import { selectProfile } from './selectProfile';
 
 describe('selectProfile', () => {

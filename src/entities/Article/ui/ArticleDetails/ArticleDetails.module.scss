@@ -1,0 +1,14 @@
+.ArticleDetails {
+  display: grid;
+  gap: 20px;
+}
+
+.avatar {
+  justify-self: center;
+}
+
+.articleInfo {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}

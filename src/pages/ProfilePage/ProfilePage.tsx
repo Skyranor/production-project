@@ -1,4 +1,6 @@
 import { useCallback, useEffect } from 'react';
+import { useTranslation } from 'react-i18next';
+
 import {
   ProfileCard,
   ValidateProfileError,
@@ -10,15 +12,13 @@ import {
   selectProfileReadOnly,
   selectProfileValidateErrors,
   updateProfile,
-} from 'entities/Profile';
-import { useAppDispatch } from 'shared/hooks/useAppDispatch';
-import { useAppSelector } from 'shared/hooks/useAppSelector';
-import { classNames } from 'shared/lib/classNames/classNames';
-import { DynamicModuleLoader, ReducerList } from 'shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
-import { Currency } from 'entities/Currency';
-import { Text, TextTheme } from 'shared/ui/Text/Text';
-import { useTranslation } from 'react-i18next';
-
+} from '@/entities/Profile';
+import { useAppDispatch } from '@/shared/hooks/useAppDispatch';
+import { useAppSelector } from '@/shared/hooks/useAppSelector';
+import { classNames } from '@/shared/lib/classNames/classNames';
+import { DynamicModuleLoader, ReducerList } from '@/shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
+import { Currency } from '@/entities/Currency';
+import { Text } from '@/shared/ui/Text/Text';
 import { ProfilePageHeader } from './ProfilePageHeader/ProfilePageHeader';
 // import cls from  './ProfilePage.module.scss';
 
@@ -114,9 +114,7 @@ const ProfilePage = ({ className }: ProfilePageProps) => {
     <DynamicModuleLoader reducers={reducers} removeAfterUnmount>
       <div className={classNames('', {}, [className])}>
         <ProfilePageHeader />
-        {validateErrors?.map((error) => (
-          <Text theme={TextTheme.ERROR} text={validateErrorTranslates[error]} key={error} />
-        ))}
+        {validateErrors?.map((error) => <Text theme='error' text={validateErrorTranslates[error]} key={error} />)}
         <ProfileCard
           onChangeFirstName={onChangeFirstName}
           onChangeLastName={onChangeLastName}

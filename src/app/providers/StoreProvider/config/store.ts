@@ -1,14 +1,19 @@
 import { CombinedState, configureStore, Reducer, ReducersMapObject } from '@reduxjs/toolkit';
-import { userReducer } from 'entities/User';
-import { counterReducer } from 'entities/Counter';
-import { $api } from 'shared/api/api';
 import { NavigateFunction } from 'react-router-dom';
 
+import { userReducer } from '@/entities/User';
+import { counterReducer } from '@/entities/Counter';
+import { $api } from '@/shared/api/api';
 import { StateSchema } from './StateSchema';
 import { createReducerManager } from './reducerManager';
 
-export function setupStore(preloadedState?: StateSchema, navigate?: NavigateFunction) {
+export function setupStore(
+  preloadedState?: StateSchema,
+  asyncReducers?: ReducersMapObject<StateSchema>,
+  navigate?: NavigateFunction
+) {
   const rootReducer: ReducersMapObject<StateSchema> = {
+    ...asyncReducers,
     counter: counterReducer,
     user: userReducer,
   };

@@ -1,6 +1,5 @@
-import { BugButton } from 'app/providers/ErrorBoundary/ui/BugButton';
-import { Counter } from 'entities/Counter';
-
+import { BugButton } from '@/app/providers/ErrorBoundary/ui/BugButton';
+import { Counter } from '@/entities/Counter';
 import { classNames } from '../../../shared/lib/classNames/classNames';
 
 const MainPage = () => (

@@ -14,6 +14,11 @@ export default ({ config }: { config: Configuration }) => {
 
   config.resolve?.modules?.push(paths.src);
   config.resolve?.extensions?.push('.ts', '.tsx');
+
+  config.resolve!.alias = {
+    ...config.resolve?.alias,
+    '@': paths.src,
+  };
   // eslint-disable-next-line @typescript-eslint/ban-ts-comment
   // @ts-ignore
   config.module!.rules = config.module?.rules?.map((rule: RuleSetRule) => {

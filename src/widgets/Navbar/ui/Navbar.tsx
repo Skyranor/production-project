@@ -1,12 +1,12 @@
-import { classNames } from 'shared/lib/classNames/classNames';
 import { useTranslation } from 'react-i18next';
 import { memo, useCallback, useState } from 'react';
-import { Button, ButtonTheme } from 'shared/ui/Button/Button';
-import { LoginModal } from 'features/AuthByUserName';
-import { useAuth } from 'shared/hooks/useAuth';
-import { useAppDispatch } from 'shared/hooks/useAppDispatch';
-import { logout } from 'entities/User';
 
+import { classNames } from '@/shared/lib/classNames/classNames';
+import { Button } from '@/shared/ui/Button/Button';
+import { LoginModal } from '@/features/AuthByUserName';
+import { useAuth } from '@/shared/hooks/useAuth';
+import { useAppDispatch } from '@/shared/hooks/useAppDispatch';
+import { logout } from '@/entities/User';
 import cls from './Navbar.module.scss';
 
 interface NavbarProps {
@@ -36,13 +36,13 @@ export const Navbar = memo((props: NavbarProps) => {
 
   return isAuth ? (
     <nav className={classNames(cls.navbar, {}, [className])}>
-      <Button theme={ButtonTheme.CLEAR} onClick={handleLogout}>
+      <Button theme='clear' onClick={handleLogout}>
         {t('Logout')}
       </Button>
     </nav>
   ) : (
     <nav className={classNames(cls.navbar, {}, [className])}>
-      <Button theme={ButtonTheme.CLEAR} onClick={handleOpenModal}>
+      <Button theme='clear' onClick={handleOpenModal}>
         {t('Login')}
       </Button>
       {isAuthModal && <LoginModal isOpen={isAuthModal} onClose={handleCloseModal} />}

@@ -7,6 +7,8 @@ export function buildResolvers(options: BuildOptions): ResolveOptions {
     extensions: ['.tsx', '.ts', '.js'],
     preferAbsolute: true,
     modules: [options.paths.src, 'node_modules'],
-    alias: {},
+    alias: {
+      '@': options.paths.src,
+    },
   };
 }

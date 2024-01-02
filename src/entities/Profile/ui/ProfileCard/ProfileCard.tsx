@@ -1,10 +1,10 @@
-import { Modes, classNames } from 'shared/lib/classNames/classNames';
 import { useTranslation } from 'react-i18next';
-import { Text, TextTheme } from 'shared/ui/Text/Text';
-import { Input } from 'shared/ui/Input/Input';
-import { Avatar } from 'shared/ui/Avatar/Avatar';
-import { Currency, CurrencySelect } from 'entities/Currency';
 
+import { Modes, classNames } from '@/shared/lib/classNames/classNames';
+import { Text } from '@/shared/ui/Text/Text';
+import { Input } from '@/shared/ui/Input/Input';
+import { Avatar } from '@/shared/ui/Avatar/Avatar';
+import { Currency, CurrencySelect } from '@/entities/Currency';
 import { Profile } from '../../model/types/profile';
 import cls from './ProfileCard.module.scss';
 
@@ -51,7 +51,7 @@ export const ProfileCard = (props: ProfileCardProps) => {
     return (
       <div className={classNames(cls.ProfileCard, {}, [className, cls.error])}>
         <Text
-          theme={TextTheme.ERROR}
+          theme='error'
           title={t('Произошла ошибка при загрузке профиля')}
           text={t('Попробуйте обновить страницу')}
           align='center'

@@ -1,22 +1,12 @@
 import { ButtonHTMLAttributes, memo } from 'react';
-import { Modes, classNames } from 'shared/lib/classNames/classNames';
 
+import { Modes, classNames } from '@/shared/lib/classNames/classNames';
 import cls from './Button.module.scss';
 
 // eslint-disable-next-line react-refresh/only-export-components
-export enum ButtonTheme {
-  CLEAR = 'clear',
-  OUTLINE = 'outline',
-  OUTLINE_RED = 'outline_red',
-  BACKGROUND = 'background',
-  BACKGROUND_INVERTED = 'backgroundInverted',
-}
+type ButtonTheme = 'clear' | 'outline' | 'outline-red' | 'background' | 'background-inverted';
 
-export enum ButtonSize {
-  M = 'size_m',
-  L = 'size_l',
-  XL = 'size_xl',
-}
+type ButtonSize = 'm' | 'l' | 'xl';
 
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   className?: string;
@@ -27,7 +17,7 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
 }
 
 export const Button = memo((props: ButtonProps) => {
-  const { className, children, theme = ButtonTheme.OUTLINE, square, size = ButtonSize.M, disabled, ...rest } = props;
+  const { className, children, theme = 'outline', square, size = 'm', disabled, ...rest } = props;
   const mods: Modes = {
     [cls.square]: square,
     [cls.disabled]: disabled,

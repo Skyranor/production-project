@@ -1,5 +1,5 @@
-import { Currency } from 'entities/Currency';
-import { Country } from 'shared/const/common';
+import { Currency } from '@/entities/Currency';
+import { Country } from '@/shared/const/common';
 
 export enum ValidateProfileError {
   INCORRECT_USER_DATA = 'INCORRECT_USER_DATA',

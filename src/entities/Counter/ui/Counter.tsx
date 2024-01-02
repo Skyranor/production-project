@@ -1,8 +1,8 @@
 /* eslint-disable i18next/no-literal-string */
 
 import { useDispatch, useSelector } from 'react-redux';
-import { Button } from 'shared/ui/Button/Button';
 
+import { Button } from '@/shared/ui/Button/Button';
 import { decrement, increment } from '../model/slice/counterSlice';
 import { selectCounterValue } from '../model/selectors/selectCounterValue/selectCounterValue';
 

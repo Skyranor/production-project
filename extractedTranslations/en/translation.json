@@ -1,8 +1,13 @@
 {
   "Age": "Age",
+  "Article not found": "Article not found",
+  "ArticleCodeBlockComponent": "ArticleCodeBlockComponent",
+  "ArticleImageBlockComponent": "ArticleImageBlockComponent",
+  "ArticleTextBlockComponent": "ArticleTextBlockComponent",
   "Avatar": "Avatar",
   "Cancel": "Cancel",
   "City": "City",
+  "Copy code": "Copy code",
   "Currency": "Currency",
   "Edit": "Edit",
   "Login": "Login",
