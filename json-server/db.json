@@ -14,15 +14,17 @@
   "users": [
     {
       "id": 1,
-      "userName": "admin",
+      "userName": "Skyranor",
       "password": "123",
-      "role": "ADMIN"
+      "role": "ADMIN",
+      "avatar": "https://static.sobaka.ru/images/image/00/80/54/85/_normal.jpg?v=1485945088"
     },
     {
       "id": 2,
       "userName": "user",
       "password": "123",
-      "role": "USER"
+      "role": "USER",
+      "avatar": "https://sk.gov.by/images/storage/news/000069_221000.jpg"
     }
   ],
   "profile": {
@@ -119,7 +121,7 @@
       "id": 2,
       "text": "some comment 2",
       "articleId": 1,
-      "userId": 1
+      "userId": 2
     },
     {
       "id": 3,
