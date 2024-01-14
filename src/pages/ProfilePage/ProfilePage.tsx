@@ -1,5 +1,6 @@
 import { useCallback, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
+import { useParams } from 'react-router-dom';
 
 import {
   ProfileCard,
@@ -38,6 +39,7 @@ const ProfilePage = ({ className }: ProfilePageProps) => {
   const validateErrors = useAppSelector(selectProfileValidateErrors);
   const dispatch = useAppDispatch();
   const { t } = useTranslation('profile');
+  const { id } = useParams<{ id: string }>();
 
   const validateErrorTranslates = {
     [ValidateProfileError.SERVER_ERROR]: t('Серверная ошибка'),
@@ -48,9 +50,11 @@ const ProfilePage = ({ className }: ProfilePageProps) => {
 
   useEffect(() => {
     if (__PROJECT__ !== 'storybook') {
-      dispatch(fetchProfileData());
+      if (id) {
+        dispatch(fetchProfileData(id));
+      }
     }
-  }, [dispatch]);
+  }, [dispatch, id]);
 
   const onChangeFirstName = useCallback(
     (value: string) => {

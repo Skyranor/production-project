@@ -4,10 +4,11 @@ import { useCallback } from 'react';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { Button } from '@/shared/ui/Button/Button';
 import { Text } from '@/shared/ui/Text/Text';
-import { cancelEdit, selectProfileReadOnly, setReadonly, updateProfileData } from '@/entities/Profile';
+import { cancelEdit, selectProfile, selectProfileReadOnly, setReadonly, updateProfileData } from '@/entities/Profile';
 import { useAppDispatch } from '@/shared/hooks/useAppDispatch';
 import { useAppSelector } from '@/shared/hooks/useAppSelector';
 import cls from './ProfilePageHeader.module.scss';
+import { selectUser } from '@/entities/User';
 
 interface ProfilePageHeaderProps {
   className?: string;
@@ -16,6 +17,9 @@ interface ProfilePageHeaderProps {
 export const ProfilePageHeader = ({ className }: ProfilePageHeaderProps) => {
   const { t } = useTranslation('profile');
   const readOnly = useAppSelector(selectProfileReadOnly);
+  const user = useAppSelector(selectUser);
+  const profile = useAppSelector(selectProfile);
+  const isOwner = user?.id === profile?.id;
 
   const dispatch = useAppDispatch();
 
@@ -34,20 +38,21 @@ export const ProfilePageHeader = ({ className }: ProfilePageHeaderProps) => {
   return (
     <div className={classNames(cls.ProfilePageHeader, {}, [className])}>
       <Text title={t('Profile')} />
-      {readOnly ? (
-        <Button theme='outline' onClick={onEdit}>
-          {t('Edit')}
-        </Button>
-      ) : (
-        <div className={cls.btns}>
-          <Button theme='outline-red' onClick={onCancelEdit}>
-            {t('Cancel')}
+      {isOwner &&
+        (readOnly ? (
+          <Button theme='outline' onClick={onEdit}>
+            {t('Edit')}
           </Button>
-          <Button theme='outline' onClick={onSave}>
-            {t('Save')}
-          </Button>
-        </div>
-      )}
+        ) : (
+          <div className={cls.btns}>
+            <Button theme='outline-red' onClick={onCancelEdit}>
+              {t('Cancel')}
+            </Button>
+            <Button theme='outline' onClick={onSave}>
+              {t('Save')}
+            </Button>
+          </div>
+        ))}
     </div>
   );
 };

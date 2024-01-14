@@ -23,7 +23,7 @@ export const RoutePath: Record<AppRoutes, string> = {
   [AppRoutes.ABOUT]: '/about',
   [AppRoutes.PROFILE]: '/profile',
   [AppRoutes.ARTICLES]: '/articles',
-  [AppRoutes.ARTICLE_DETAILS]: '/articles/:id',
+  [AppRoutes.ARTICLE_DETAILS]: '/articles',
 };
 
 export const routeConfig: Record<AppRoutes, AppRoutesProps> = {
@@ -36,17 +36,17 @@ export const routeConfig: Record<AppRoutes, AppRoutesProps> = {
     element: <AboutPage />,
   },
   [AppRoutes.PROFILE]: {
-    path: RoutePath.profile,
+    path: `${RoutePath.profile}/:id`,
     element: <ProfilePage />,
     authOnly: true,
   },
   [AppRoutes.ARTICLES]: {
-    path: RoutePath.articles,
+    path: `${RoutePath.articles}`,
     element: <ArticlesPage />,
     authOnly: true,
   },
   [AppRoutes.ARTICLE_DETAILS]: {
-    path: RoutePath.article_details,
+    path: `${RoutePath.article_details}/:id`,
     element: <ArticleDetailsPage />,
     authOnly: true,
   },

@@ -6,7 +6,7 @@ import { useAppDispatch } from '@/shared/hooks/useAppDispatch';
 import { initAuthData, selectUserMounted } from '@/entities/User';
 import { useAppSelector } from '@/shared/hooks/useAppSelector';
 import { AppRouter } from './providers/router';
-import { Sidebar } from '@/widgets/Side';
+import { Sidebar } from '@/widgets/Sidebar';
 
 export const App = () => {
   const dispatch = useAppDispatch();

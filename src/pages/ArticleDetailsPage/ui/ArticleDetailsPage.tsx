@@ -13,6 +13,8 @@ import { useAppSelector } from '@/shared/hooks/useAppSelector';
 import { selectArticleCommentsError, selectArticleCommentsIsLoading } from '../model/selectors/comments';
 import { useAppDispatch } from '@/shared/hooks/useAppDispatch';
 import { fetchCommentsByArticleId } from '../model/services/fetchCommentsByArticleId';
+import { AddNewComment } from '@/features/addNewComment';
+import { addCommentForArticle } from '../model/services/addCommentForArticle';
 
 interface ArticleDetailsPageProps {
   className?: string;
@@ -30,9 +32,13 @@ const ArticleDetailsPage = (props: ArticleDetailsPageProps) => {
   const isLoading = useAppSelector(selectArticleCommentsIsLoading);
   const error = useAppSelector(selectArticleCommentsError);
 
+  const handleSendComment = (text: string) => {
+    dispatch(addCommentForArticle(text));
+  };
+
   useEffect(() => {
     if (id) {
-      dispatch(fetchCommentsByArticleId(id));
+      dispatch(fetchCommentsByArticleId(Number(id)));
     }
   }, [dispatch, id]);
 
@@ -44,6 +50,7 @@ const ArticleDetailsPage = (props: ArticleDetailsPageProps) => {
     <DynamicModuleLoader removeAfterUnmount reducers={reducers}>
       <div className={classNames(cls.ArticleDetailsPage, {}, [className])}>
         <ArticleDetails id={Number(id)} className={cls.article} />
+        <AddNewComment onSendComment={handleSendComment} />
         <Text title={t('Comments')} className={cls.title} />
         <CommentList comments={comments} isLoading={isLoading} />
       </div>

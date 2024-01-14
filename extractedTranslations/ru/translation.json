@@ -1,4 +1,5 @@
 {
+  "Add comment": "Add comment",
   "Age": "Age",
   "Article not found": "Article not found",
   "ArticleCodeBlockComponent": "ArticleCodeBlockComponent",
@@ -12,6 +13,8 @@
   "Copy code": "Copy code",
   "Currency": "Currency",
   "Edit": "Edit",
+  "Enter comment": "Enter comment",
+  "Enter comment text": "Enter comment text",
   "Login": "Login",
   "Logout": "Logout",
   "No comments": "No comments",
