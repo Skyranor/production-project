@@ -4,7 +4,7 @@ import { memo } from 'react';
 import { AppLink, AppLinkTheme } from '@/shared/ui/AppLink/AppLink';
 import { useAuth } from '@/shared/hooks/useAuth';
 import cls from './SidebarItem.module.scss';
-import { SidebarItemType } from '../model/items';
+import { SidebarItemType } from '../model/types/sidebar';
 
 interface SidebarItemProps {
   item: SidebarItemType;

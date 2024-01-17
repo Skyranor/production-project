@@ -5,8 +5,9 @@ import { ThemeSwitcher } from '@/shared/ui/ThemeSwitcher';
 import { LangSwitcher } from '@/shared/ui/LangSwitcher';
 import { Button } from '@/shared/ui/Button/Button';
 import cls from './Sidebar.module.scss';
-import { SidebarItemsList } from '../model/items';
 import { SidebarItem } from '../SidebarItem/SidebarItem';
+import { useAppSelector } from '@/shared/hooks/useAppSelector';
+import { selectSidebarItems } from '../model/selectors/selectSidebarItems';
 
 interface SidebarProps {
   className?: string;
@@ -14,6 +15,8 @@ interface SidebarProps {
 
 export const Sidebar = memo((props: SidebarProps) => {
   const { className } = props;
+
+  const SidebarItemsList = useAppSelector(selectSidebarItems);
 
   const [collapsed, setCollapsed] = useState(false);
 
