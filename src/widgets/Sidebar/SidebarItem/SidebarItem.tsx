@@ -1,7 +1,7 @@
 import { useTranslation } from 'react-i18next';
 import { memo } from 'react';
 
-import { AppLink, AppLinkTheme } from '@/shared/ui/AppLink/AppLink';
+import { AppLink } from '@/shared/ui/AppLink/AppLink';
 import { useAuth } from '@/shared/hooks/useAuth';
 import cls from './SidebarItem.module.scss';
 import { SidebarItemType } from '../model/types/sidebar';
@@ -19,7 +19,7 @@ export const SidebarItem = memo(({ item }: SidebarItemProps) => {
   }
 
   return (
-    <AppLink className={cls.link} theme={AppLinkTheme.SECONDARY} to={item.path}>
+    <AppLink className={cls.link} theme='secondary' to={item.path}>
       <item.Icon />
       <span>{t(item.text)}</span>
     </AppLink>

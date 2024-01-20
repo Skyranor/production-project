@@ -1,6 +1,6 @@
 import { memo, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
-import { useParams } from 'react-router-dom';
+import { useLocation, useParams } from 'react-router-dom';
 
 import { ArticleDetails } from '@/entities/Article';
 import { classNames } from '@/shared/lib/classNames/classNames';
@@ -15,6 +15,8 @@ import { useAppDispatch } from '@/shared/hooks/useAppDispatch';
 import { fetchCommentsByArticleId } from '../model/services/fetchCommentsByArticleId';
 import { AddNewComment } from '@/features/addNewComment';
 import { addCommentForArticle } from '../model/services/addCommentForArticle';
+import { AppLink } from '@/shared/ui/AppLink/AppLink';
+import { RoutePath } from '@/shared/config/routeConfig/routeConfig';
 
 interface ArticleDetailsPageProps {
   className?: string;
@@ -31,6 +33,10 @@ const ArticleDetailsPage = (props: ArticleDetailsPageProps) => {
   const comments = useAppSelector(selectArticleComments.selectAll);
   const isLoading = useAppSelector(selectArticleCommentsIsLoading);
   const error = useAppSelector(selectArticleCommentsError);
+
+  const { state } = useLocation();
+  const location = useLocation();
+  console.log(location);
 
   const handleSendComment = (text: string) => {
     dispatch(addCommentForArticle(text));
@@ -49,6 +55,9 @@ const ArticleDetailsPage = (props: ArticleDetailsPageProps) => {
   return (
     <DynamicModuleLoader removeAfterUnmount reducers={reducers}>
       <div className={classNames(cls.ArticleDetailsPage, {}, [className])}>
+        <AppLink theme='outline' to={state?.from ?? RoutePath.main}>
+          {t('Back')}
+        </AppLink>
         <ArticleDetails id={Number(id)} className={cls.article} />
         <AddNewComment onSendComment={handleSendComment} />
         <Text title={t('Comments')} className={cls.title} />

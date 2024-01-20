@@ -5,7 +5,10 @@
   "ArticleCodeBlockComponent": "ArticleCodeBlockComponent",
   "ArticleImageBlockComponent": "ArticleImageBlockComponent",
   "ArticleTextBlockComponent": "ArticleTextBlockComponent",
+  "ArticlesPage": "ArticlesPage",
   "Avatar": "Avatar",
+  "Back": "Back",
+  "Back to articles": "Back to articles",
   "Cancel": "Cancel",
   "City": "City",
   "Comment": "Comment",
@@ -24,6 +27,14 @@
   "Save": "Save",
   "Something went wrong": "Something went wrong",
   "Toggle": "Toggle",
+  "View more": "View more",
+  "View more ": {
+    "": {
+      "": {
+        "": ""
+      }
+    }
+  },
   "Your age": "Your age",
   "Your city": "Your city",
   "Your currency": "Your currency",

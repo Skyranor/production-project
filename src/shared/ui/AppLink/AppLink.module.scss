@@ -1,6 +1,7 @@
 .AppLink {
-  color: var (--primary-color);
+  color: var(--primary-color);
   text-decoration: none;
+  width: fit-content;
 
   &:hover {
     opacity: 0.8;
@@ -8,10 +9,12 @@
   }
 }
 
-.primary {
-  color: var(--primary-color);
-}
-
 .secondary {
   color: var(--inverted-primary-color);
+}
+
+.outline {
+  border: 1px solid var(--primary-color);
+  border-radius: 5px;
+  padding: 6px 15px;
 }

@@ -4,10 +4,7 @@ import { memo } from 'react';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import cls from './AppLink.module.scss';
 
-export enum AppLinkTheme {
-  PRIMARY = 'primary',
-  SECONDARY = 'secondary',
-}
+type AppLinkTheme = 'primary' | 'secondary' | 'outline';
 
 interface AppLinkProps extends LinkProps {
   className?: string;
@@ -15,8 +12,9 @@ interface AppLinkProps extends LinkProps {
 }
 
 export const AppLink = memo((props: AppLinkProps) => {
-  const { className, children, theme = AppLinkTheme.PRIMARY, ...rest } = props;
+  const { className, children, theme = 'primary', ...rest } = props;
   return (
+    // eslint-disable-next-line react/jsx-props-no-spreading
     <Link className={classNames(cls.AppLink, {}, [className, cls[theme]])} {...rest}>
       {children}
     </Link>

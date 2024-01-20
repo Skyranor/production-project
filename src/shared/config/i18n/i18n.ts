@@ -15,7 +15,7 @@ i18n
     supportedLngs: ['ru', 'en'],
 
     // lng: 'ru',
-    debug: !!__IS_DEV__,
+    // debug: !!__IS_DEV__,
     // defaultNS: 'main',
     // ns: ['main'],
     backend: {
