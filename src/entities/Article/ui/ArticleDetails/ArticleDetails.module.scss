@@ -1,10 +1,11 @@
 .ArticleDetails {
   display: grid;
   gap: 20px;
-}
 
-.avatar {
-  justify-self: center;
+  .avatar {
+    justify-self: center;
+    object-fit: fill;
+  }
 }
 
 .articleInfo {

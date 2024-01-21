@@ -12,7 +12,7 @@ interface ArticleListProps {
 }
 
 export const ArticleList = (props: ArticleListProps) => {
-  const { className, articles, isLoading = false, view = 'GRID' } = props;
+  const { className, articles, isLoading = false, view = 'LIST' } = props;
 
   if (isLoading) {
     return (

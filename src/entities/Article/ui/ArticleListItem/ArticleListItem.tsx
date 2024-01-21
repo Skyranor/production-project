@@ -73,6 +73,7 @@ export const ArticleListItem = (props: ArticleListItemProps) => {
         <span>{article.views}</span>
         <Icon Svg={EyeIcon} />
       </div>
+      <span className={cls.date}>{article.createdAt}</span>
     </Link>
   );
 };
