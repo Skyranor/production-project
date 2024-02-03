@@ -21,6 +21,7 @@ import { DynamicModuleLoader, ReducerList } from '@/shared/lib/components/Dynami
 import { Currency } from '@/entities/Currency';
 import { Text } from '@/shared/ui/Text/Text';
 import { ProfilePageHeader } from './ProfilePageHeader/ProfilePageHeader';
+import { Page } from '@/shared/ui/Page/Page';
 // import cls from  './ProfilePage.module.scss';
 
 const reducers: ReducerList = {
@@ -116,7 +117,7 @@ const ProfilePage = ({ className }: ProfilePageProps) => {
 
   return (
     <DynamicModuleLoader reducers={reducers} removeAfterUnmount>
-      <div className={classNames('', {}, [className])}>
+      <Page className={classNames('', {}, [className])}>
         <ProfilePageHeader />
         {validateErrors?.map((error) => <Text theme='error' text={validateErrorTranslates[error]} key={error} />)}
         <ProfileCard
@@ -131,7 +132,7 @@ const ProfilePage = ({ className }: ProfilePageProps) => {
           error={error}
           readOnly={readOnly}
         />
-      </div>
+      </Page>
     </DynamicModuleLoader>
   );
 };

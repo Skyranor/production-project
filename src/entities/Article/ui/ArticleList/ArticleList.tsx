@@ -14,23 +14,20 @@ interface ArticleListProps {
 export const ArticleList = (props: ArticleListProps) => {
   const { className, articles, isLoading = false, view = 'LIST' } = props;
 
-  if (isLoading) {
-    return (
-      <div className={classNames(cls.ArticleList, {}, [className, cls[view]])}>
-        <ArticleListItemSkeleton view={view} />
-        <ArticleListItemSkeleton view={view} />
-        <ArticleListItemSkeleton view={view} />
-      </div>
-    );
-  }
+  const renderSkeletons = (articleView: ArticleView) =>
+    new Array(view === 'GRID' ? 9 : 3)
+      .fill(0)
+      // eslint-disable-next-line react/no-array-index-key
+      .map((_, index) => <ArticleListItemSkeleton key={index} view={articleView} />);
 
   const renderArticle = (article: Article) => (
     <ArticleListItem article={article} view={view} className={cls.ArticleListItem} key={article.id} />
   );
 
-  if (view === 'LIST') {
-    return <div className={classNames(cls.ArticleList, {}, [className, cls[view]])}>{articles.map(renderArticle)}</div>;
-  }
-
-  return <div className={classNames(cls.ArticleList, {}, [className, cls[view]])}>{articles.map(renderArticle)}</div>;
+  return (
+    <div className={classNames(cls.ArticleList, {}, [className, cls[view]])}>
+      {articles.map(renderArticle)}
+      {isLoading && renderSkeletons(view)}
+    </div>
+  );
 };

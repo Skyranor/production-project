@@ -1,5 +1,4 @@
 import { memo, useEffect } from 'react';
-import { useTranslation } from 'react-i18next';
 
 import { classNames } from '@/shared/lib/classNames/classNames';
 import cls from './ArticlesPage.module.scss';
@@ -9,6 +8,8 @@ import { articlesPageActions, articlesPageReducer, getArticles, setView } from '
 import { useAppDispatch, useAppSelector } from '@/shared/hooks';
 import { fetchArticlesList } from '../model/services/fetchArticlesList';
 import { selectArticlesPageIsLoading, selectArticlesPageView } from '../model/selectors/articlesPageSelectors';
+import { Page } from '@/shared/ui/Page/Page';
+import { fetchNextArticlesPage } from '../model/services/fetchNextArticlesPage/fetchNextArticlesPage';
 
 interface ArticlesPageProps {
   className?: string;
@@ -20,28 +21,29 @@ const reducers: ReducerList = {
 
 const ArticlesPage = (props: ArticlesPageProps) => {
   const { className } = props;
-  const { t } = useTranslation();
   const dispatch = useAppDispatch();
   const articles = useAppSelector(getArticles.selectAll);
   const isLoading = useAppSelector(selectArticlesPageIsLoading);
   const view = useAppSelector(selectArticlesPageView);
 
-  console.log(view);
-
   const handleChangeView = (newView: ArticleView) => {
     dispatch(setView(newView));
   };
 
+  const handleLoadMore = () => {
+    dispatch(fetchNextArticlesPage());
+  };
+
   useEffect(() => {
-    dispatch(fetchArticlesList());
     dispatch(articlesPageActions.initState());
+    dispatch(fetchArticlesList({ page: 1 }));
   }, [dispatch]);
   return (
-    <DynamicModuleLoader reducers={reducers} removeAfterUnmount={false}>
-      <div className={classNames(cls.ArticlesPage, {}, [className])}>
+    <DynamicModuleLoader reducers={reducers}>
+      <Page onScrollEnd={handleLoadMore} className={classNames(cls.ArticlesPage, {}, [className])}>
         <ArticleViewSelector view={view} onViewClick={handleChangeView} />
         <ArticleList articles={articles} isLoading={isLoading} view={view} />
-      </div>
+      </Page>
     </DynamicModuleLoader>
   );
 };

@@ -17,6 +17,7 @@ import { AddNewComment } from '@/features/addNewComment';
 import { addCommentForArticle } from '../model/services/addCommentForArticle';
 import { AppLink } from '@/shared/ui/AppLink/AppLink';
 import { RoutePath } from '@/shared/config/routeConfig/routeConfig';
+import { Page } from '@/shared/ui/Page/Page';
 
 interface ArticleDetailsPageProps {
   className?: string;
@@ -54,7 +55,7 @@ const ArticleDetailsPage = (props: ArticleDetailsPageProps) => {
 
   return (
     <DynamicModuleLoader removeAfterUnmount reducers={reducers}>
-      <div className={classNames(cls.ArticleDetailsPage, {}, [className])}>
+      <Page className={classNames(cls.ArticleDetailsPage, {}, [className])}>
         <AppLink theme='outline' to={state?.from ?? RoutePath.main}>
           {t('Back')}
         </AppLink>
@@ -62,7 +63,7 @@ const ArticleDetailsPage = (props: ArticleDetailsPageProps) => {
         <AddNewComment onSendComment={handleSendComment} />
         <Text title={t('Comments')} className={cls.title} />
         <CommentList comments={comments} isLoading={isLoading} />
-      </div>
+      </Page>
     </DynamicModuleLoader>
   );
 };

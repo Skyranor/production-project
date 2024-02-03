@@ -15,9 +15,5 @@ export const AppRouter = () => {
       />
     );
   }, []);
-  return (
-    <main className='page-wrapper'>
-      <Routes>{Object.values(routeConfig).map(renderWithWrapper)}</Routes>
-    </main>
-  );
+  return <Routes>{Object.values(routeConfig).map(renderWithWrapper)}</Routes>;
 };
